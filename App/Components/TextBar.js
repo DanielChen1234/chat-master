@@ -26,18 +26,17 @@ class TextBar extends Component {
 
   render() {
     return (
-      <View style={{flex: 1, flexDirection: 'row', width: '100%', marginTop: 30}}>
+      <View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap', width: '100%', marginTop: 30}}>
           <TextInput
             value={this.state.textMessage}
             onChangeText={(evt) => this.newMessage(evt)}
-            multiline={true}
-            style={{height: Math.max(35, 0)}}
+            style={{width: '85%'}}
             placeholder="enter text here"
           />
 
           <Button
             title='send'
-            style={{position: 'absolute', alignSelf: 'flex-end'}}
+            style={{position: 'relative', alignSelf: 'flex-end', width: '15%'}}
             onPress={(evt) => this.messageSubmit(evt)}
           />
       </View>
