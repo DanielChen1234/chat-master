@@ -1,7 +1,7 @@
 const defaultState = [
   {
     user_email: 'a@b.com',
-    message: 'Hello world!',
+    message: 'Hello world!'
   },
 ]
 
@@ -9,7 +9,7 @@ const defaultState = [
 const chat = (state = defaultState, action) => {
   switch (action.type) {
     case 'ADD_MESSAGE':
-      let { user_email, message } = action;
+      let { user_email, message} = action;
       return [
         ...state,
         {

@@ -1,25 +1,10 @@
-import { put, delay, } from 'redux-saga/effects'
-import lorem from 'lorem-ipsum-react-native'
+import chatSaga from './chats'
+import {all} from 'redux-saga/effects'
 
-const emails = [
-  'a@b.com',
-  'test@rehashstudio.com',
-  'steve@jobs.com',
-  'hello@world.com',
-  'foo@bar.com',
-]
-
-function* addChatsSaga() {
-  while (true) {
-    yield delay(5000)
-    const email = emails[Math.floor(Math.random()*emails.length)];
-    yield put({
-      type: 'ADD_MESSAGE',
-      user_email: email,
-      message: lorem({
-      }),
-    })
-  }
+function* rootSaga(){
+  yield all([
+    ...chatSaga
+  ])
 }
 
-export default addChatsSaga
+export default rootSaga
