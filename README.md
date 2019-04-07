@@ -1,26 +1,17 @@
-Try adding as many as these features as you can manage:
+I had fun working on this!
 
-- Update to ES6 Classes instead of function components
-- Use FlatList to display messages
-- Make messages grow for larger text
-- Add Text Field on button to enter chat messages into the chat
-- Align your messages to the right and everyone else to the left
-- Group username headers so if the same person chats multiple times in a row it only shows once
-- Add date like username is listed (grouped as above)
-- Add multiple "Chat Channels" and a intro screen with a list of channels and the option to create a new one (new ones will have fake users added)
-- Store Channel state in a new redux state
-- Autogrow text input when adding new entries
-- Autoscroll to bottom when new message arrives
-- Prevent autoscroll if scrolled upwards viewing history (exception - when you send a new message)
-- Change your email address in the chat
-- Add speech bubble image behind each chat message
-- Open "User page" by tapping on user image (just email and gravatar image)
-- Add styling to show different colors for your message or theirs
-- Replace any 4-letter words with '****', and for censoring, would you do this on sending the message , on entering it in the store or when displaying it and why?
-- Update styles to fix for iPhone X
+For the list, I used Flatlist per your suggestion. I believe that the items that are not able to be seen (either at the front or back of the list) are not loaded to save performance. It is an effective way to render list, especially in a chat app.
+
+Handling text growth in both the rendered FlatList and the text entry were handled using a text wrap.
+
+The algorithm used to "censor" four letter words was placed in the ChatMessage component. It seems to be the proper location due to the component receiving the user object with a message. I decided to use an array method to assist in the algo. I used the method 'split' to turn the string into an array. From there, I ran the 'reduce' method partnered with a ternary to check if the string's length was equal to four. If so, I would concat '****' to the accumulator.
+
+The algorithim I used to group messages together if the message was from one user was handled in ChatLog. It was the logical place due the Chats array being present there. For a sanity check, I used a conditional to check if the array length was at least two or greater. Then I checked if the last object and the penultimate object shared the same username. If so, I would pass a boolean to ChatMessage, which would then conditionally render the username. The same applies to the date.
+
+AutoScroll for new messages was handled using ScrollView and refs, using its built-in scrollToEnd. The methods with be paired with AutoScroll's prop onContentSizeChange, which, as the name suggests, scans for changes in length to the messages array.
+
+Compatiablity for iPhone X was implemented using SafeAreaView and wrapping it around the the root index.js file. 
 
 
-Bonus:
-- Add Typescript
 
 

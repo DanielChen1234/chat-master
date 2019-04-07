@@ -20,8 +20,8 @@ const ChatLog = ({ chats }) => {
         <ScrollView 
           style={{position: 'relative'}}
           ref={ref => this.scrollView = ref}
-          onContentSizeChange={(contentWidth, contentHeight)=>{        
-          this.scrollView.scrollToEnd({animated: true});
+          onContentSizeChange={(contentWidth, contentHeight) => {       
+            scrollView.scrollToEnd({animated: true});
           }}
         >
           <FlatList

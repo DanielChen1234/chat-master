@@ -23,8 +23,8 @@ const ChatMessage = ({ chatMessage }) => {
 
   return (
     <View style={{flex: 1, flexDirection:'row', alignSelf: 'flex-end', height: 60, maxHeight: 60}}>
-      {userName !== null ? <Text style={{flex: 0, flexWrap: 'wrap'}}>{`${userName} on ${today}`} </Text> : <Text style={{flex: 0, flexWrap: 'wrap'}}>{`${today}`} </Text>}
-      <Text style={{flex: 1, flexWrap: 'wrap'}}>{censorString.trim()}</Text>
+      {userName !== null ? <Text style={{flex: 0, flexWrap: 'wrap', width: '20%'}}>{`${userName} ${today}`} </Text> : null}
+      <Text style={{flex: 1, flexWrap: 'wrap', width: '70%'}}>{censorString.trim()}</Text>
       <Image style={styles.roundedProfileImage}
              source={{uri: avatarUrl}} />
     </View>
