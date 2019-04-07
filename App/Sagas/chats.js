@@ -18,6 +18,7 @@ function* addChatsSaga() {
       user_email: email,
       message: lorem({
       }),
+      isOwnUser: false
     })
   }
 }
@@ -26,7 +27,8 @@ function* userAddToChat(action){
   yield put({
     type: 'ADD_MESSAGE',
     user_email: action.payload.user_email,
-    message: action.payload.message
+    message: action.payload.message,
+    isOwnUser: action.payload.isOwnUser
   })
 }
 
