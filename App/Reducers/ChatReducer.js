@@ -1,3 +1,5 @@
+import {Types} from '../Actions/index'
+
 const defaultState = [
   {
     user_email: 'a@b.com',
@@ -9,7 +11,7 @@ const defaultState = [
 
 const chat = (state = defaultState, action) => {
   switch (action.type) {
-    case 'ADD_MESSAGE':
+    case Types.ADD_MESSAGE:
       let { user_email, message, isOwnUser } = action;
       return [
         ...state,
