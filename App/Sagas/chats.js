@@ -1,4 +1,5 @@
 import { put, delay, fork, takeLatest} from 'redux-saga/effects'
+import {Types} from '../Actions/index'
 import lorem from 'lorem-ipsum-react-native'
 
 const emails = [
@@ -14,7 +15,7 @@ function* addChatsSaga() {
     yield delay(5000)
     const email = emails[Math.floor(Math.random()*emails.length)];
     yield put({
-      type: 'ADD_MESSAGE',
+      type: Types.ADD_MESSAGE,
       user_email: email,
       message: lorem({
       }),
@@ -25,7 +26,7 @@ function* addChatsSaga() {
 
 function* userAddToChat(action){
   yield put({
-    type: 'ADD_MESSAGE',
+    type: Types.ADD_MESSAGE,
     user_email: action.payload.user_email,
     message: action.payload.message,
     isOwnUser: action.payload.isOwnUser
@@ -33,7 +34,7 @@ function* userAddToChat(action){
 }
 
 function* watchUserAddToChat(){
-  yield takeLatest('ADD_USER_MESSAGE', userAddToChat)
+  yield takeLatest(Types.ADD_USER_MESSAGE, userAddToChat)
 }
 
 const chatSaga = [
