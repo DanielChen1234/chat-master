@@ -18,8 +18,10 @@ class TextBar extends Component {
 
   messageSubmit = (evt) => {
     const {textMessage} = this.state
-    this.props.ownUserMessage('daniel.chen@gmail.com', textMessage, true)
-    this.setState({textMessage: ''})
+    if (textMessage.length >= 1){
+      this.props.ownUserMessage('daniel.chen@gmail.com', textMessage, true)
+      this.setState({textMessage: ''})
+    }
   }
 
   render() {

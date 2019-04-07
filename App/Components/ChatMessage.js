@@ -9,9 +9,22 @@ const ChatMessage = ({ chatMessage }) => {
                       parameters: { size: "50", "d": "monsterid"},
                     }).replace('http', 'https')
 
+  const censorString = chatMessage.message.split(' ').reduce((acc, word) => {
+                          return acc + ' ' + (word.length === 4 ? '****' : word)
+                       }, '')
+
+  const userName = chatMessage.user_email_match_prev === true ? null : chatMessage.user_email
+
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, '0');
+  let mm = String(today.getMonth() + 1).padStart(2, '0');
+  let yyyy = today.getFullYear();
+  today = `${mm}/${dd}/${yyyy}`
+
   return (
     <View style={{flex: 1, flexDirection:'row', alignSelf: 'flex-end', height: 60, maxHeight: 60}}>
-      <Text>{chatMessage.message}</Text>
+      {userName !== null ? <Text style={{flex: 1, flexWrap: 'wrap'}}>{`${userName} on ${today}`} </Text> : <Text style={{flex: 1, flexWrap: 'wrap'}}>{`${today}`} </Text>}
+      <Text style={{flex: 1, flexWrap: 'wrap'}}>{censorString.trim()}</Text>
       <Image style={styles.roundedProfileImage}
              source={{uri: avatarUrl}} />
     </View>

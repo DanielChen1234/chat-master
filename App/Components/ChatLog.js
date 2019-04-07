@@ -6,6 +6,16 @@ import TextBar from './TextBar'
 
 const ChatLog = ({ chats }) => {
 
+  if(chats.length >= 2){
+    let final = chats[chats.length-1]
+    let penultimate = chats[chats.length-2]
+  
+    if(final.user_email === penultimate.user_email){
+      final.user_email_match_prev = true
+    }
+  }
+
+
   return (
       <View style={{flex: 1, flexDirection: 'column', width: '100%', marginTop: 30}} >
         <View style={{position: 'relative'}}>
@@ -19,9 +29,20 @@ const ChatLog = ({ chats }) => {
         <View style={{position: 'absolute', bottom: 30}}>
           <TextBar />
         </View>
+
       </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    top: 20,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+})
 
 ChatLog.propTypes = {
   chats: PropTypes.arrayOf(
@@ -33,5 +54,3 @@ ChatLog.propTypes = {
 }
 
 export default ChatLog
-
-
