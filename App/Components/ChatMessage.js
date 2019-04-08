@@ -20,6 +20,9 @@ const ChatMessage = ({ chatMessage }) => {
   const mm = String(today.getMonth() + 1).padStart(2, '0');
   const yyyy = today.getFullYear();
   today = `${mm}/${dd}/${yyyy}`
+  
+  let rowDirection = {}
+  rowDirection.flexDirection = chatMessage.isOwnUser === true ? 'row' : 'row-reverse'
 
   const rowDirection = {}
   const colorStyle = {}

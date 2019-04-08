@@ -15,5 +15,3 @@ Compatiablity for iPhone X was implemented using SafeAreaView and wrapping it ar
 Conditional rendering used for text bubble colors
 
 npm install & npm run ios
-
-
