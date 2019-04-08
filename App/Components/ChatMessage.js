@@ -25,16 +25,21 @@ const ChatMessage = ({ chatMessage }) => {
     <View style={{flex: 1, flexDirection:'row', alignSelf: 'flex-end', height: 60, maxHeight: 60}}>
       {userName !== null ? <Text style={{flex: 0, flexWrap: 'wrap'}}>{`${userName} on ${today}`} </Text> : <Text style={{flex: 0, flexWrap: 'wrap'}}>{`${today}`} </Text>}
       <Text style={{flex: 1, flexWrap: 'wrap'}}>{censorString.trim()}</Text>
-      <Image style={styles.roundedProfileImage}
-             source={{uri: avatarUrl}} />
+      <Image
+        style={styles.roundedProfileImage}
+        source={{uri: avatarUrl}}
+      />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   roundedProfileImage: {
-    width:50, height:50, borderWidth:3,
-    borderColor:'black', borderRadius:25
+    width: 50,
+    height: 50,
+    borderWidth: 3,
+    borderColor: 'black',
+    borderRadius: 25
   }
 })
 
