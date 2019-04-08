@@ -6,11 +6,11 @@ import TextBar from './TextBar'
 
 const ChatLog = ({ chats }) => {
 
-  if(chats.length >= 2){
-    let finalEmail = chats[chats.length-1]
-    let penultimateEmail = chats[chats.length-2]
+  if (chats.length >= 2){
+    let finalEmail = chats[chats.length - 1]
+    let penultimateEmail = chats[chats.length - 2]
 
-    if(finalEmail.user_email === penultimateEmail.user_email){
+    if (finalEmail.user_email === penultimateEmail.user_email){
       finalEmail.user_email_match_prev = true
     }
   }

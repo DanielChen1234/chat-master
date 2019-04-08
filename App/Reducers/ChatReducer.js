@@ -8,7 +8,6 @@ const defaultState = [
   },
 ]
 
-
 const chat = (state = defaultState, action) => {
   switch (action.type) {
     case Types.ADD_MESSAGE:

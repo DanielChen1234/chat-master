@@ -16,13 +16,13 @@ const ChatMessage = ({ chatMessage }) => {
   const userName = chatMessage.user_email_match_prev === true ? null : chatMessage.user_email
 
   let today = new Date();
-  let dd = String(today.getDate()).padStart(2, '0');
-  let mm = String(today.getMonth() + 1).padStart(2, '0');
-  let yyyy = today.getFullYear();
+  const dd = String(today.getDate()).padStart(2, '0');
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const yyyy = today.getFullYear();
   today = `${mm}/${dd}/${yyyy}`
 
-  let rowDirection = {}
-  let colorStyle = {}
+  const rowDirection = {}
+  const colorStyle = {}
   rowDirection.flexDirection = chatMessage.isOwnUser === true ? 'row' : 'row-reverse'
   colorStyle.backgroundColor = chatMessage.isOwnUser === true ? '#93D14C' : '#F1F0F5'
 
@@ -42,8 +42,12 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     height: 60,
     maxHeight: 60,
-    margin: 10, marginTop: 10, marginBottom: 0,
-    padding: 10, borderRadius: 5, paddingBottom: 10,
+    margin: 10,
+    marginTop: 10,
+    marginBottom: 0,
+    padding: 10,
+    borderRadius: 5,
+    paddingBottom: 10,
   },
   roundedProfileImage: {
     width: 50,
@@ -63,7 +67,7 @@ const styles = StyleSheet.create({
     width: '70%',
     backgroundColor: 'transparent',
     alignSelf: 'flex-end',
-    fontSize: 12,
+    fontSize: 10,
     marginBottom: -5,
     marginTop: 2
   }

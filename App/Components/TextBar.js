@@ -35,7 +35,7 @@ class TextBar extends Component {
           />
 
           <Button
-            title='send'
+            title="send"
             style={styles.buttonSubmit}
             onPress={(evt) => this.messageSubmit(evt)}
           />
