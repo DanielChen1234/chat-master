@@ -16,12 +16,12 @@ const ChatLog = ({ chats }) => {
   }
 
   return (
-      <View style={{flex: 1, flexDirection: 'column', width: '100%', marginTop: 30}} >
+      <View style={styles.container} >
         <ScrollView 
-          style={{position: 'relative'}}
+          style={styles.scroll}
           ref={ref => this.scrollView = ref}
           onContentSizeChange={(contentWidth, contentHeight) => {       
-            scrollView.scrollToEnd({animated: true});
+            this.scrollView.scrollToEnd({animated: true});
           }}
         >
           <FlatList
@@ -31,7 +31,7 @@ const ChatLog = ({ chats }) => {
           />
         </ScrollView>
 
-        <View style={{position: 'absolute', bottom: 20}}>
+        <View style={styles.textEntry}>
           <TextBar />
         </View>
 
@@ -42,11 +42,18 @@ const ChatLog = ({ chats }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    top: 20,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'column',
+    width: '100%',
+    marginTop: 30
   },
+  scroll: {
+    position: 'relative',
+    bottom: '4%'
+  },
+  textEntry: {
+    position: 'absolute',
+    bottom: 1
+  }
 })
 
 ChatLog.propTypes = {

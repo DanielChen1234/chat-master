@@ -20,11 +20,14 @@ const ChatMessage = ({ chatMessage }) => {
   let mm = String(today.getMonth() + 1).padStart(2, '0');
   let yyyy = today.getFullYear();
   today = `${mm}/${dd}/${yyyy}`
+  
+  let rowDirection = {}
+  rowDirection.flexDirection = chatMessage.isOwnUser === true ? 'row' : 'row-reverse'
 
   return (
-    <View style={{flex: 1, flexDirection:'row', alignSelf: 'flex-end', height: 60, maxHeight: 60}}>
-      {userName !== null ? <Text style={{flex: 0, flexWrap: 'wrap', width: '20%'}}>{`${userName} ${today}`} </Text> : null}
-      <Text style={{flex: 1, flexWrap: 'wrap', width: '70%'}}>{censorString.trim()}</Text>
+    <View style={[styles.messageBlock, rowDirection]}>
+      {userName !== null ? <Text style={styles.textDisplayUserName}>{`${userName} ${today}`} </Text> : null}
+      <Text style={styles.textMessage}>{censorString.trim()}</Text>
       <Image style={styles.roundedProfileImage}
              source={{uri: avatarUrl}} />
     </View>
@@ -32,9 +35,27 @@ const ChatMessage = ({ chatMessage }) => {
 }
 
 const styles = StyleSheet.create({
+  messageBlock: {
+    flex: 1,
+    alignSelf: 'flex-end',
+    height: 60,
+    maxHeight: 60,
+  },
   roundedProfileImage: {
-    width:50, height:50, borderWidth:3,
-    borderColor:'black', borderRadius:25
+    width:50,
+    height:50,
+    borderWidth:3,
+    borderColor:'black',
+    borderRadius:25
+  },
+  textDisplayUserName: {
+    flexWrap: 'wrap',
+    width: '20%'
+  },
+  textMessage: {
+    flex: 1,
+    flexWrap: 'wrap', 
+    width: '70%'
   }
 })
 
