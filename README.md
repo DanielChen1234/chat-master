@@ -10,8 +10,8 @@ The algorithim I used to group messages together if the message was from one use
 
 AutoScroll for new messages was handled using ScrollView and refs, using its built-in scrollToEnd. The methods with be paired with AutoScroll's prop onContentSizeChange, which, as the name suggests, scans for changes in length to the messages array.
 
-Compatiablity for iPhone X was implemented using SafeAreaView and wrapping it around the the root index.js file. 
+Compatiablity for iPhone X was implemented using SafeAreaView and wrapping it around the the root index.js file.
 
-
+npm install & npm run ios
 
 
