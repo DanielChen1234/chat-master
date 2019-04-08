@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, FlatList, StyleSheet} from 'react-native'
+import { View, FlatList, StyleSheet, ScrollView} from 'react-native'
 import PropTypes from 'prop-types'
 import ChatMessage from './ChatMessage'
 import TextBar from './TextBar'
@@ -7,26 +7,31 @@ import TextBar from './TextBar'
 const ChatLog = ({ chats }) => {
 
   if(chats.length >= 2){
-    let final = chats[chats.length-1]
-    let penultimate = chats[chats.length-2]
-  
-    if(final.user_email === penultimate.user_email){
-      final.user_email_match_prev = true
+    let finalEmail = chats[chats.length-1]
+    let penultimateEmail = chats[chats.length-2]
+
+    if(finalEmail.user_email === penultimateEmail.user_email){
+      finalEmail.user_email_match_prev = true
     }
   }
 
-
   return (
-      <View style={{flex: 1, flexDirection: 'column', width: '100%', marginTop: 30}} >
-        <View style={{position: 'relative'}}>
+      <View style={styles.container} >
+        <ScrollView 
+          style={styles.scroll}
+          ref={ref => this.scrollView = ref}
+          onContentSizeChange={(contentWidth, contentHeight) => {       
+            this.scrollView.scrollToEnd({animated: true});
+          }}
+        >
           <FlatList
             data={chats}
             renderItem = {({item, index}) => <ChatMessage key={item.user_email} chatMessage={item} />}
             keyExtractor={(item, index) => index.toString()}
           />
-        </View>
+        </ScrollView>
 
-        <View style={{position: 'absolute', bottom: 30}}>
+        <View style={styles.textEntry}>
           <TextBar />
         </View>
 
@@ -37,11 +42,18 @@ const ChatLog = ({ chats }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    top: 20,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'column',
+    width: '100%',
+    marginTop: 30
   },
+  scroll: {
+    position: 'relative',
+    bottom: '4%'
+  },
+  textEntry: {
+    position: 'absolute',
+    bottom: 1
+  }
 })
 
 ChatLog.propTypes = {
