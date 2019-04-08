@@ -23,10 +23,7 @@ const ChatMessage = ({ chatMessage }) => {
   
   let rowDirection = {}
   rowDirection.flexDirection = chatMessage.isOwnUser === true ? 'row' : 'row-reverse'
-
-  const rowDirection = {}
   const colorStyle = {}
-  rowDirection.flexDirection = chatMessage.isOwnUser === true ? 'row' : 'row-reverse'
   colorStyle.backgroundColor = chatMessage.isOwnUser === true ? '#93D14C' : '#007AFF'
 
   return (
