@@ -12,6 +12,6 @@ AutoScroll for new messages was handled using ScrollView and refs, using its bui
 
 Compatiablity for iPhone X was implemented using SafeAreaView and wrapping it around the the root index.js file.
 
+Conditional rendering used for text bubble colors
+
 npm install & npm run ios
-
-

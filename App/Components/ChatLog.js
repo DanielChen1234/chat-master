@@ -6,11 +6,11 @@ import TextBar from './TextBar'
 
 const ChatLog = ({ chats }) => {
 
-  if(chats.length >= 2){
-    let finalEmail = chats[chats.length-1]
-    let penultimateEmail = chats[chats.length-2]
+  if (chats.length >= 2){
+    let finalEmail = chats[chats.length - 1]
+    let penultimateEmail = chats[chats.length - 2]
 
-    if(finalEmail.user_email === penultimateEmail.user_email){
+    if (finalEmail.user_email === penultimateEmail.user_email){
       finalEmail.user_email_match_prev = true
     }
   }
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   },
   scroll: {
     position: 'relative',
-    bottom: '4%'
+    marginBottom: '15%'
   },
   textEntry: {
     position: 'absolute',

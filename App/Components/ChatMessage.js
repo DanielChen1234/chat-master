@@ -16,16 +16,21 @@ const ChatMessage = ({ chatMessage }) => {
   const userName = chatMessage.user_email_match_prev === true ? null : chatMessage.user_email
 
   let today = new Date();
-  let dd = String(today.getDate()).padStart(2, '0');
-  let mm = String(today.getMonth() + 1).padStart(2, '0');
-  let yyyy = today.getFullYear();
+  const dd = String(today.getDate()).padStart(2, '0');
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const yyyy = today.getFullYear();
   today = `${mm}/${dd}/${yyyy}`
   
   let rowDirection = {}
   rowDirection.flexDirection = chatMessage.isOwnUser === true ? 'row' : 'row-reverse'
 
+  const rowDirection = {}
+  const colorStyle = {}
+  rowDirection.flexDirection = chatMessage.isOwnUser === true ? 'row' : 'row-reverse'
+  colorStyle.backgroundColor = chatMessage.isOwnUser === true ? '#93D14C' : '#007AFF'
+
   return (
-    <View style={[styles.messageBlock, rowDirection]}>
+    <View style={[styles.messageBlock, rowDirection, colorStyle]}>
       {userName !== null ? <Text style={styles.textDisplayUserName}>{`${userName} ${today}`} </Text> : null}
       <Text style={styles.textMessage}>{censorString.trim()}</Text>
       <Image style={styles.roundedProfileImage}
@@ -40,22 +45,34 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     height: 60,
     maxHeight: 60,
+    margin: 10,
+    marginTop: 10,
+    marginBottom: 0,
+    padding: 10,
+    borderRadius: 5,
+    paddingBottom: 10,
   },
   roundedProfileImage: {
-    width:50,
-    height:50,
-    borderWidth:3,
-    borderColor:'black',
-    borderRadius:25
+    width: 50,
+    height: 50,
+    borderWidth: 3,
+    borderColor: 'black',
+    borderRadius: 25
   },
   textDisplayUserName: {
     flexWrap: 'wrap',
-    width: '20%'
+    width: '30%',
+    fontSize: 8,
   },
   textMessage: {
     flex: 1,
-    flexWrap: 'wrap', 
-    width: '70%'
+    flexWrap: 'wrap',
+    width: '70%',
+    backgroundColor: 'transparent',
+    alignSelf: 'flex-end',
+    fontSize: 10,
+    marginBottom: -5,
+    marginTop: 2
   }
 })
 
