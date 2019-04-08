@@ -24,7 +24,7 @@ const ChatMessage = ({ chatMessage }) => {
   const rowDirection = {}
   const colorStyle = {}
   rowDirection.flexDirection = chatMessage.isOwnUser === true ? 'row' : 'row-reverse'
-  colorStyle.backgroundColor = chatMessage.isOwnUser === true ? '#93D14C' : '#F1F0F5'
+  colorStyle.backgroundColor = chatMessage.isOwnUser === true ? '#93D14C' : '#007AFF'
 
   return (
     <View style={[styles.messageBlock, rowDirection, colorStyle]}>
