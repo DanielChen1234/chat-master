@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   },
   scroll: {
     position: 'relative',
-    bottom: '4%'
+    marginBottom: '15%'
   },
   textEntry: {
     position: 'absolute',
